@@ -1,0 +1,49 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/index.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inconsolata&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/34a5d1d112.js"></script>
+    <script src="js/login.js"></script>
+    <title>Document</title>
+    
+    <!--
+         - roxo Nubank
+        #e8934d - laranja claro
+        funcao Cadastra-->
+</head>
+<body>
+    <div class="wrapper">
+        <div class="sidebar">
+            <h2><!--Info usuario-->404 Error</h2>
+            <ul>
+                <li><a href="">Home</a></li>
+                <li><a href="">Painel Administrativo</a></li>
+                <li><a href="">Alterar Senha</a></li>
+                <li><a href="login.html">Login/Cadastro</a></li>
+            </ul>
+            <div class="social_media">
+                <a href="#"><i class="fab fa-github-square"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+            </div>
+        </div>
+        <div class="main_content">
+            <div class="header">
+                <label id="sessao">Welcome, </label>
+                <script>
+
+                    let usuario = localStorage.getItem('NomeLogado')
+                    document.getElementById('sessao').innerHTML = 'Welcome, ' + usuario;
+
+                </script>
+                
+            </div>
+            <div class="info">
+                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Distinctio odio suscipit pariatur. Pariatur nemo earum dicta non! Dolorum, sequi, odit similique, quasi odio earum quam iure autem itaque quis perferendis!
+            </div>
+        </div>
+    </div>
+</body>
+</html>

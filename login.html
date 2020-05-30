@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/login.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inconsolata&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <script src="js/login.js"></script>
+    <title>Login/Cadastro</title>
+</head>
+<body style="background-color: #a663e6;">
+    <form class="box" action="">
+        <div class="row">
+            <div class="col-6">
+                <h1>Login</h1>
+                    <input id="txtlemail" type="text" name="" placeholder="E-mail">
+                    <input id="txtlsenha" type="password" name="" placeholder="Password">
+                    <a onclick="Logar()">Login</a>
+            </div>
+            
+            <div class="col-6">
+                <h1>Cadastro</h1>
+                <div class="row">
+                    <div class="col-5">
+                        <input id="txtnome" type="text" name="" placeholder="Name">
+                    </div>
+                    <div class="col-6">
+                        <input id="txtemail" type="text" name="" placeholder="Email">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-5">
+                        <input id="txttelefone" type="text" name="" placeholder="Phone">
+                    </div>
+                    <div class="col-6">
+                        <input id="txtendereco" type="text" name="" placeholder="Adress">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-11">
+                        <input id="txtsenha" type="password" name="" placeholder="Password">
+                        <a onclick="Cadastra()">Cadastrar</a>
+                    </div>
+                </div>                    
+                    
+            </div>
+        </div>
+    <a href="index.html">Voltar</a>
+    </form>
+</body>
+</html>

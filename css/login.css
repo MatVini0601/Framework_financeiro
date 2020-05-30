@@ -1,0 +1,64 @@
+body{
+    margin: 0;
+    padding: 0;
+}
+
+.box{
+    width: 1200px;
+    padding: 40px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    border: 2px solid #e8934d;
+    border-radius: 8px;
+    text-align: center;
+    background-color: #fff;
+}
+
+.box h1{
+    color: #e8934d;
+    font-family: 'Inconsolata', monospace;
+    text-transform: uppercase;
+}
+
+.box input[type = "text"],.box input[type = "password"]{
+    border: 0;
+    background: #fff;
+    display: block;
+    margin: 20px auto;
+    text-align: center;
+    border: 2px solid #a663e6;
+    padding: 14px 10px;
+    width: 200px;
+    outline: none;
+    color: #a663e6;
+    border-radius: 24px;
+    transition: 0.25s;
+}
+.box a{
+    border: 0;
+    background: #fff;
+    display: block;
+    margin: 20px auto;
+    text-align: center;
+    border: 2px solid #e8934d;
+    padding: 14px;
+    outline: none;
+    color: #a663e6;
+    border-radius: 24px;
+    transition: 0.25s;
+    width: 100px;
+    text-decoration: none;
+}
+
+.box a:hover{
+    background: #e8934d;
+    color: #fff;
+    text-decoration: none;
+}
+
+.box input[type = "text"]:focus,.box input[type = "password"]:focus{
+    border-color: #e8934d;
+    width: 260px;
+}
