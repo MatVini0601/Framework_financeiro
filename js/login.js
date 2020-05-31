@@ -29,14 +29,14 @@ function Logar(){
     let senha = document.getElementById('txtlsenha').value;
 
     Cadastro = JSON.parse(localStorage.getItem('CadastroCliente'));
-    if(email == "" || senha == ""){
+    if(email == "" || email == null || senha == "" || senha == null){
         alert('Digite a porcaria do texto seu arrombado')
     }
    Cadastro.forEach(element => {
         if(element.email == email){
            if(element.senha == senha){
-            alert('bem vindo '+ element.nome)
-            window.location.replace('index.html')
+            window.location.replace('index.html');
+            alert('bem vindo '+ element.nome);
             localStorage.setItem('UsuarioLogado',element.email)
             localStorage.setItem('NomeLogado',element.nome)
            }else{

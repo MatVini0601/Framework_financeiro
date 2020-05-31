@@ -12,44 +12,49 @@
     <script src="js/login.js"></script>
     <title>Login/Cadastro</title>
 </head>
-<body style="background-color: #a663e6;">
-    <form class="box" action="">
-        <div class="row">
-            <div class="col-6">
-                <h1>Login</h1>
+<body>
+        <div class="hero">
+            <div class="form-box">
+                <div class="button">
+                    <div id="btn"></div>
+                    <button class="toggle-btn" onclick="login()">Login</button>
+                    <button class="toggle-btn" onclick="register()">Register</button>
+                </div>
+                <form id="login" class="inputs">
                     <input id="txtlemail" type="text" name="" placeholder="E-mail">
                     <input id="txtlsenha" type="password" name="" placeholder="Password">
-                    <a onclick="Logar()">Login</a>
+                    <button onclick="Logar()" class="submit-btn" id="botao">Login</button>
+                    <a href="index.html">Voltar</a>
+                </form>
+                <form id="register" class="inputs">
+                    <input id="txtnome" type="text" name="" placeholder="Name">
+                    <input id="txtemail" type="text" name="" placeholder="Email">
+                    <input id="txttelefone" type="text" name="" placeholder="Phone">
+                    <input id="txtendereco" type="text" name="" placeholder="Adress">
+                    <input id="txtsenha" type="password" name="" placeholder="Password">
+                    <button onclick="Cadastra()" class="submit=btn">Cadastrar</button>
+                    <a href="index.html">Voltar</a>
+                </form>
             </div>
-            
-            <div class="col-6">
-                <h1>Cadastro</h1>
-                <div class="row">
-                    <div class="col-5">
-                        <input id="txtnome" type="text" name="" placeholder="Name">
-                    </div>
-                    <div class="col-6">
-                        <input id="txtemail" type="text" name="" placeholder="Email">
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-5">
-                        <input id="txttelefone" type="text" name="" placeholder="Phone">
-                    </div>
-                    <div class="col-6">
-                        <input id="txtendereco" type="text" name="" placeholder="Adress">
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-11">
-                        <input id="txtsenha" type="password" name="" placeholder="Password">
-                        <a onclick="Cadastra()">Cadastrar</a>
-                    </div>
-                </div>                    
+
+            <script>
+                var x = document.getElementById("login");
+                var y = document.getElementById("register");
+                var z = document.getElementById("btn");
                     
-            </div>
-        </div>
-    <a href="index.html">Voltar</a>
-    </form>
+                function register(){
+                    x.style.left = "-400px"
+                    y.style.left = "80px"
+                    z.style.left = "115px"
+                }
+                    
+                function login(){
+                    x.style.left = "80px"
+                    y.style.left = "600px"
+                    z.style.left = "0px"
+                }
+            </script>
+
+        </div>   
 </body>
 </html>
