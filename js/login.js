@@ -8,18 +8,22 @@ function Cadastra(){
     let telefone = document.getElementById('txttelefone').value;
     let endereco = document.getElementById('txtendereco').value;
 
-    if(localStorage.getItem('CadastroCliente') == null){
-        localStorage.setItem('CadastroCliente', '[]')
-        Cadastro = JSON.parse(localStorage.getItem('CadastroCliente'))
-        let id = Cadastro.length;
-        var Cliente = {id: id++,nome,email,senha,telefone,endereco,status}
-        Cadastro.push(Cliente)
-        localStorage.setItem('CadastroCliente',JSON.stringify(Cadastro))
+ if(nome == "" || email == "" || senha == "" || telefone == "" || endereco == ""){
+    alert('digite todos os campos')
     }else{
-        let id = Cadastro.length;
-        var Cliente = {id: id++,nome,email,senha,telefone,endereco,status}
-        Cadastro.push(Cliente)
-        localStorage.setItem('CadastroCliente',JSON.stringify(Cadastro))
+        if(localStorage.getItem('CadastroCliente') == null){
+            localStorage.setItem('CadastroCliente', '[]')
+            Cadastro = JSON.parse(localStorage.getItem('CadastroCliente'))
+            let id = Cadastro.length;
+            var Cliente = {id: id++,nome,email,senha,telefone,endereco,status}
+            Cadastro.push(Cliente)
+            localStorage.setItem('CadastroCliente',JSON.stringify(Cadastro))
+        }else{
+            let id = Cadastro.length;
+            var Cliente = {id: id++,nome,email,senha,telefone,endereco,status}
+            Cadastro.push(Cliente)
+            localStorage.setItem('CadastroCliente',JSON.stringify(Cadastro))
+        }
     }
     Limpar()
 }
