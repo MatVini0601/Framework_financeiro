@@ -18,14 +18,15 @@ function Cadastra(){
             var Cliente = {id: id++,nome,email,senha,telefone,endereco,status}
             Cadastro.push(Cliente)
             localStorage.setItem('CadastroCliente',JSON.stringify(Cadastro))
+            Limpar()
         }else{
             let id = Cadastro.length;
             var Cliente = {id: id++,nome,email,senha,telefone,endereco,status}
             Cadastro.push(Cliente)
             localStorage.setItem('CadastroCliente',JSON.stringify(Cadastro))
+            Limpar()
         }
     }
-    Limpar()
 }
 
 function Logar(){
