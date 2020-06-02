@@ -27,14 +27,17 @@
         </div>
         <div class="main_content">
             <div class="header">
-                <label id="sessao">Welcome, </label>
+                <label id="sessao">Welcome! </label>
                 <script>
 
-                    let usuario = localStorage.getItem('NomeLogado')
-                    document.getElementById('sessao').innerHTML = 'Welcome, ' + usuario;
-
+                    if(localStorage.getItem('NomeLogado') == "[]" || localStorage.getItem('NomeLogado') == null){
+                        document.getElementById('sessao').innerHTML = 'Welcome!';
+                    }else{
+                        let usuario = localStorage.getItem('NomeLogado')
+                        document.getElementById('sessao').innerHTML = 'Welcome, ' + usuario;
+                    }
+                    
                 </script>
-                
             </div>
             <div class="info">
                 Lorem, ipsum dolor sit amet consectetur adipisicing elit. Distinctio odio suscipit pariatur.

@@ -1,5 +1,6 @@
 let Cadastro = []
 Cadastro = JSON.parse(localStorage.getItem('CadastroCliente'))
+
 function Cadastra(){
 
     let nome = document.getElementById('txtnome').value;
@@ -7,6 +8,7 @@ function Cadastra(){
     let senha = document.getElementById('txtsenha').value;
     let telefone = document.getElementById('txttelefone').value;
     let endereco = document.getElementById('txtendereco').value;
+    let status = "Ativo";
 
  if(nome == "" || email == "" || senha == "" || telefone == "" || endereco == ""){
     alert('digite todos os campos')
@@ -15,17 +17,20 @@ function Cadastra(){
             localStorage.setItem('CadastroCliente', '[]')
             Cadastro = JSON.parse(localStorage.getItem('CadastroCliente'))
             let id = Cadastro.length;
-            var Cliente = {id: id++,nome,email,senha,telefone,endereco,status}
+            var Cliente = {
+                id: id++,nome,email,senha,telefone,endereco,status
+            }
             Cadastro.push(Cliente)
             localStorage.setItem('CadastroCliente',JSON.stringify(Cadastro))
-            Limpar()
         }else{
             let id = Cadastro.length;
-            var Cliente = {id: id++,nome,email,senha,telefone,endereco,status}
+            var Cliente = {
+                id: id++,nome,email,senha,telefone,endereco,status
+            }
             Cadastro.push(Cliente)
             localStorage.setItem('CadastroCliente',JSON.stringify(Cadastro))
-            Limpar()
         }
+        Limpar()
     }
 }
 
@@ -34,16 +39,21 @@ function Logar(){
     let senha = document.getElementById('txtlsenha').value;
 
     Cadastro = JSON.parse(localStorage.getItem('CadastroCliente'));
+
     if(email == "" || email == null || senha == "" || senha == null){
-        alert('Digite a porcaria do texto seu arrombado')
+        alert('Digite todos os campos')
     }
    Cadastro.forEach(element => {
         if(element.email == email){
            if(element.senha == senha){
-            window.location.replace('index.html');
-            alert('bem vindo '+ element.nome);
-            localStorage.setItem('UsuarioLogado',element.email)
-            localStorage.setItem('NomeLogado',element.nome)
+               if(element.status == "Ativo"){
+                    window.location.replace('index.html');
+                    alert('bem vindo '+ element.nome);
+                    localStorage.setItem('UsuarioLogado',element.email)
+                    localStorage.setItem('NomeLogado',element.nome)
+               }else{
+                   alert('Você esta incapacitado de logar no momento, Por favor entre em contato com o suporte')
+               }
            }else{
             alert("Cadastro não encontrado")
            }     
