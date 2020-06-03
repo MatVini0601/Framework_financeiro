@@ -1,6 +1,6 @@
 let Cadastro = []
 Cadastro = JSON.parse(localStorage.getItem('CadastroCliente'))
-
+let v = 0
 function Cadastra(){
 
     let nome = document.getElementById('txtnome').value;
@@ -13,22 +13,45 @@ function Cadastra(){
  if(nome == "" || email == "" || senha == "" || telefone == "" || endereco == ""){
     alert('digite todos os campos')
     }else{
+        debugger
         if(localStorage.getItem('CadastroCliente') == null){
             localStorage.setItem('CadastroCliente', '[]')
             Cadastro = JSON.parse(localStorage.getItem('CadastroCliente'))
-            let id = Cadastro.length;
-            var Cliente = {
-                id: id++,nome,email,senha,telefone,endereco,status
+            Cadastro.forEach(element => {
+                if(element.email == email){
+                    v = 1
+                }
+            });
+            if( v == 1){
+                alert('email ja cadastrado')
+                v = 0;
+            }else{
+                let id = Cadastro.length;
+                var Cliente = {
+                    id: id++,nome,email,senha,telefone,endereco,status
+                }
+                Cadastro.push(Cliente)
+                localStorage.setItem('CadastroCliente',JSON.stringify(Cadastro))
+                v = 0
             }
-            Cadastro.push(Cliente)
-            localStorage.setItem('CadastroCliente',JSON.stringify(Cadastro))
         }else{
-            let id = Cadastro.length;
-            var Cliente = {
-                id: id++,nome,email,senha,telefone,endereco,status
+            Cadastro.forEach(element => {
+                if(element.email == email){
+                    v = 1
+                }
+            });
+            if( v == 1){
+                alert('email ja cadastrado')
+                v = 0;
+            }else{
+                let id = Cadastro.length;
+                var Cliente = {
+                    id: id++,nome,email,senha,telefone,endereco,status
+                }
+                Cadastro.push(Cliente)
+                localStorage.setItem('CadastroCliente',JSON.stringify(Cadastro))
+                v = 0
             }
-            Cadastro.push(Cliente)
-            localStorage.setItem('CadastroCliente',JSON.stringify(Cadastro))
         }
         Limpar()
     }
@@ -66,5 +89,24 @@ function Limpar(){
     var array = document.getElementsByTagName("input");
     for(Itens of array){
         Itens.value = "";
+    }
+}
+
+function logout(){
+
+    let logout = confirm('Você deseja realmente sair?')
+
+    if(logout = true){
+        let usuario = localStorage.getItem('UsuarioLogado')
+        let nomeUsuario = localStorage.getItem('NomeLogado')
+    
+        usuario = '[]'
+        nomeUsuario = '[]'
+    
+        localStorage.setItem('UsuarioLogado',usuario)
+        localStorage.setItem('NomeLogado',nomeUsuario)
+        window.location.reload('index.html')
+    }else{
+
     }
 }
