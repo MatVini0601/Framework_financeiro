@@ -123,9 +123,10 @@ function alterarSenha(){
 
     if(id == "" || id == null){
         alert('faça Login Primeiro')
-    }else if(id != "" || id != null){
+    }else{
         window.location.replace('alterarsenha.html')
-    }else if(Cadastro[id].senha != document.getElementById('txtsenha').value){
+    }
+     if(Cadastro[id].senha != document.getElementById('txtsenha').value){
         alert('Senha digitada não bate com a atual')
     }else if(document.getElementById('txtnsenha').value != document.getElementById('txtrnsenha').value){
         alert('As senha não são iguais')
@@ -135,7 +136,5 @@ function alterarSenha(){
         Cadastro[id].senha = document.getElementById('txtrnsenha').value
         localStorage.setItem('CadastroCliente',JSON.stringify(Cadastro))
         window.location.replace('index.html')
-    }
-    
-    
+    }    
 }
