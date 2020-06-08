@@ -74,7 +74,7 @@ function Logar(){
                     alert('bem vindo '+ element.nome);
                     localStorage.setItem('UsuarioLogado',element.email)
                     localStorage.setItem('NomeLogado',element.nome)
-                    localStorage.setItem('IdAtual',element.id)
+                    localStorage.setItem('IdAtual',JSON.stringify([element.id]))
                }else{
                    alert('Você esta incapacitado de logar no momento, Por favor entre em contato com o suporte')
                }
@@ -121,7 +121,7 @@ function alterarSenha(){
     id = JSON.parse(localStorage.getItem('IdAtual'))
     
 
-    if(id == "" || id == null){
+    if(id = "" || id == null){
         alert('faça Login Primeiro')
     }else{
         window.location.replace('alterarsenha.html')
