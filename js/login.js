@@ -74,6 +74,7 @@ function Logar(){
                     alert('bem vindo '+ element.nome);
                     localStorage.setItem('UsuarioLogado',element.email)
                     localStorage.setItem('NomeLogado',element.nome)
+                    localStorage.setItem('IdAtual',element.id)
                }else{
                    alert('Você esta incapacitado de logar no momento, Por favor entre em contato com o suporte')
                }
@@ -109,4 +110,26 @@ function logout(){
     }else{
 
     }
+}
+
+function alterarSenha(){
+
+    Cadastro = JSON.parse(localStorage.getItem('CadastroCliente'))
+    id = JSON.parse(localStorage.getItem('IdAtual'))
+
+    if(id == "" || id == null){
+        alert('faça Login Primeiro')
+    }else if(Cadastro[id].senha != document.getElementById('txtsenha').value){
+        alert('Senha digitada não bate com a atual')
+    }else if(document.getElementById('txtnsenha').value != document.getElementById('txtrnsenha').value){
+        alert('As senha não são iguais')
+    }else if(document.getElementById('txtsenha').value == "" || document.getElementById('txtnsenha').value == "" || document.getElementById('txtrnsenha').value == "" ){
+        alert('senha não pode ser vazia')
+    }else{
+        Cadastro[id].senha = document.getElementById('txtrnsenha').value
+        localStorage.setItem('CadastroCliente',JSON.stringify(Cadastro))
+        window.location.replace('index.html')
+    }
+    
+    
 }
