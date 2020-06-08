@@ -121,7 +121,7 @@ function alterarSenha(){
     id = JSON.parse(localStorage.getItem('IdAtual'))
     
 
-    if(id == "" || id == null){
+    if(id = "" || id == null){
         alert('faça Login Primeiro')
     }else{
         window.location.replace('alterarsenha.html')
