@@ -74,7 +74,7 @@ function Logar(){
                     alert('bem vindo '+ element.nome);
                     localStorage.setItem('UsuarioLogado',element.email)
                     localStorage.setItem('NomeLogado',element.nome)
-                    localStorage.setItem('IdAtual',element.id)
+                    localStorage.setItem('IdAtual',JSON.stringify([element.id]))
                }else{
                    alert('Você esta incapacitado de logar no momento, Por favor entre em contato com o suporte')
                }
