@@ -100,12 +100,15 @@ function logout(){
     if(logout = true){
         let usuario = localStorage.getItem('UsuarioLogado')
         let nomeUsuario = localStorage.getItem('NomeLogado')
+        let idAtual = localStorage.getItem('IdAtual')
     
         usuario = '[]'
         nomeUsuario = '[]'
+        idAtual = '[]'
     
         localStorage.setItem('UsuarioLogado',usuario)
         localStorage.setItem('NomeLogado',nomeUsuario)
+        localStorage.setItem('IdAtual',idAtual)
         window.location.reload('index.html')
     }else{
 
@@ -116,9 +119,12 @@ function alterarSenha(){
 
     Cadastro = JSON.parse(localStorage.getItem('CadastroCliente'))
     id = JSON.parse(localStorage.getItem('IdAtual'))
+    
 
     if(id == "" || id == null){
         alert('faça Login Primeiro')
+    }else if(id != "" || id != null){
+        window.location.replace('alterarsenha.html')
     }else if(Cadastro[id].senha != document.getElementById('txtsenha').value){
         alert('Senha digitada não bate com a atual')
     }else if(document.getElementById('txtnsenha').value != document.getElementById('txtrnsenha').value){
