@@ -13,7 +13,6 @@ function Cadastra(){
  if(nome == "" || email == "" || senha == "" || telefone == "" || endereco == ""){
     alert('digite todos os campos')
     }else{
-        debugger
         if(localStorage.getItem('CadastroCliente') == null){
             localStorage.setItem('CadastroCliente', '[]')
             Cadastro = JSON.parse(localStorage.getItem('CadastroCliente'))
@@ -74,7 +73,7 @@ function Logar(){
                     alert('bem vindo '+ element.nome);
                     localStorage.setItem('UsuarioLogado',element.email)
                     localStorage.setItem('NomeLogado',element.nome)
-                    localStorage.setItem('IdAtual',JSON.stringify([element.id]))
+                    localStorage.setItem('IdAtual',JSON.stringify(element.id))
                }else{
                    alert('Você esta incapacitado de logar no momento, Por favor entre em contato com o suporte')
                }
@@ -119,22 +118,28 @@ function alterarSenha(){
 
     Cadastro = JSON.parse(localStorage.getItem('CadastroCliente'))
     id = JSON.parse(localStorage.getItem('IdAtual'))
-    
+    console.log(id)
+    debugger
 
-    if(id = "" || id == null){
-        alert('faça Login Primeiro')
-    }else{
-        window.location.replace('alterarsenha.html')
-    }
-     if(Cadastro[id].senha != document.getElementById('txtsenha').value){
-        alert('Senha digitada não bate com a atual')
-    }else if(document.getElementById('txtnsenha').value != document.getElementById('txtrnsenha').value){
-        alert('As senha não são iguais')
-    }else if(document.getElementById('txtsenha').value == "" || document.getElementById('txtnsenha').value == "" || document.getElementById('txtrnsenha').value == "" ){
-        alert('senha não pode ser vazia')
-    }else{
-        Cadastro[id].senha = document.getElementById('txtrnsenha').value
-        localStorage.setItem('CadastroCliente',JSON.stringify(Cadastro))
-        window.location.replace('index.html')
-    }    
+        if(id == "" || id == null){
+            alert('faça Login Primeiro')
+        }else{
+            window.location.assign('alterarsenha.html')
+        }
+        if(Cadastro[id].senha != document.getElementById('txtsenha').value){
+            alert('Senha digitada não bate com a atual')
+        }else if(Cadastro[id].senha == document.getElementById('txtrnsenha').value){
+            alert('Nova senha não pode ser igual a antiga')
+        }else if(document.getElementById('txtnsenha').value != document.getElementById('txtrnsenha').value){
+            alert('As senha não são iguais')
+        }else if(document.getElementById('txtsenha').value == "" || document.getElementById('txtnsenha').value == "" || document.getElementById('txtrnsenha').value == "" ){
+            alert('senha não pode ser vazia')
+        }else{
+            Cadastro[id].senha = document.getElementById('txtrnsenha').value
+            localStorage.setItem('CadastroCliente',JSON.stringify(Cadastro))
+            window.location.replace('index.html')
+            alert('Senha alterada com sucesso')
+            
+        }   
+        
 }
