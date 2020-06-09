@@ -18,7 +18,7 @@ function alterarPerfil(){
     let Cadastro = JSON.parse(localStorage.getItem('CadastroCliente'));
     let id = JSON.parse(localStorage.getItem('IdAtual'))
 
-    if(document.getElementById('txtnome') == "" || document.getElementById('txtemail') == "" || document.getElementById('txttelefone') == "" || document.getElementById('txtendereco') == ""){
+    if(document.getElementById('txtnome').value == "" || document.getElementById('txtemail').value == "" || document.getElementById('txttelefone').value == "" || document.getElementById('txtendereco').value == ""){
         alert('Digite todos os campos')
     }else{
         Cadastro[id].nome = document.getElementById('txtnome').value
@@ -29,5 +29,6 @@ function alterarPerfil(){
         localStorage.setItem('CadastroCliente',JSON.stringify(Cadastro))
         localStorage.setItem('UsuarioLogado',Cadastro[id].email)
         localStorage.setItem('NomeLogado',Cadastro[id].nome)
+        alert('Dados alterados com sucesso')
     }
 }
