@@ -70,7 +70,7 @@ function Logar(){
            if(element.senha == senha){
                if(element.status == "Ativo"){
                     window.location.replace('index.html');
-                    alert('bem vindo '+ element.nome);
+                    alert('Bem vindo '+ element.nome);
                     localStorage.setItem('UsuarioLogado',element.email)
                     localStorage.setItem('NomeLogado',element.nome)
                     localStorage.setItem('IdAtual',JSON.stringify(element.id))
