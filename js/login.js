@@ -121,7 +121,7 @@ function alterarSenha(){
     console.log(id)
     debugger
 
-        if(id == null){
+        if(id == null || id.length == 0){
             alert('faça Login Primeiro')
         }else{
             window.location.assign('alterarsenha.html')
