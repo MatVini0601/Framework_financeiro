@@ -1,0 +1,125 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/34a5d1d112.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inconsolata&display=swap" rel="stylesheet">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/cadastrarcategorias.css">
+    <script src="js/login.js"></script>
+    <script src="js/perfil.js"></script>
+    <script src="js/categoria.js"></script>
+    <title>Início</title>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="sidebar">
+            <h2>404 Error</h2>
+            <ul>
+                <li><a href="Index.html">Home</a></li>
+                <li><a href="painel.html">Painel Administrativo</a></li>
+                <li><a href="cadastrarcategorias.html">Categorias</a></li>
+                <li><a href="contas.html">Contas</a></li>
+                <li><a href="perfil.html">Perfil</a></li>
+                <li><a onclick="alterarSenha()" style="cursor: pointer;">Alterar Senha</a></li>
+                <li><a href="login.html">Login/Cadastro</a></li>
+                <li><a style="cursor: pointer;" onclick="logout()">Logout</a></li>
+            </ul>
+            <div class="social_media">
+                <a href="https://github.com/Gaburieru35" target="blank"><i class="fab fa-github-square"></i></a>
+                <a href="https://www.instagram.com/gabriel_hrod/" target="blank"><i class="fab fa-instagram"></i></a>
+                <a href="https://twitter.com/DesuKuningan" target="blank"><i class="fab fa-twitter"></i></a>
+            </div>
+        </div>
+        <div class="main_content">
+            <div class="header">
+                <label id="sessao">Welcome! </label>
+                <script>
+
+                    if(localStorage.getItem('NomeLogado') == "[]" || localStorage.getItem('NomeLogado') == null){
+                        document.getElementById('sessao').innerHTML = 'Welcome!';
+                    }else{
+                        let usuario = localStorage.getItem('NomeLogado')
+                        document.getElementById('sessao').innerHTML = 'Welcome, ' + usuario;
+                    }
+                    
+                </script>
+            </div>
+            <div class="info">
+                <div class="box">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-12">
+                                <h2>Categorias</h2><br>
+                                <div class="row" id="Tabela">
+                                    <div class="col-6">
+                                        <h3>ID</h3><br>
+                                        <label for="">0</label><br>
+                                        <label for="">0</label><br>
+                                        <label for="">0</label><br>
+                                        <label for="">0</label><br>
+                                        <label for="">0</label><br>
+                                        <label for="">0</label><br>
+                                        <label for="">0</label><br>
+                                        <label for="">0</label><br>
+                                        <label for="">0</label><br>
+                                        <label for="">0</label><br>
+                                        <label for="">0</label><br>
+                                        <label for="">0</label><br>
+                                        <label for="">0</label><br>
+                                        <label for="">0</label><br>
+                                        <label for="">0</label><br>
+                                        <label for="">0</label><br>
+                                        <label for="">0</label><br>
+                                        <label for="">0</label><br>
+                                    </div>
+                                    <div class="col-6">
+                                        <h3>Category</h3><br>
+                                        <label for="">Drogas</label><br>
+                                        <label for="">0</label><br>
+                                        <label for="">0</label><br>
+                                        <label for="">0</label><br>
+                                        <label for="">0</label><br>
+                                        <label for="">0</label><br>
+                                        <label for="">0</label><br>
+                                        <label for="">0</label><br>
+                                        <label for="">0</label><br>
+                                        <label for="">0</label><br>
+                                        <label for="">0</label><br>
+                                        <label for="">0</label><br>
+                                        <label for="">0</label><br>
+                                        <label for="">0</label><br>
+                                        <label for="">0</label><br>
+                                        <label for="">0</label><br>
+                                        <label for="">0</label><br>
+                                        <label for="">0</label><br>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row" id="add">
+                                <a onclick="openForm()">+</a>
+                                
+                                <div class="form-popup" id="addCategorias">
+                                    <form class="form-container">
+                                  
+                                      <label for="">Categoria</label><br>
+                                      <input type="text" placeholder="Category Name" name="txtcategoria"><br>
+                                  
+                                      <button type="submit" class="btn">Add</button>
+                                      <button type="submit" class="btn cancel" onclick="closeForm()">Close</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+<script>verPerfil()</script>
