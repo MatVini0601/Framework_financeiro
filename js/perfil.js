@@ -6,11 +6,11 @@ function verPerfil(){
     if(id == null){
         alert('faça login primeiro')
     }else{
-       document.getElementById('lblnome').innerHTML = Cadastro[id].nome
-       document.getElementById('lblemail').innerHTML = Cadastro[id].email
-       document.getElementById('lbltelefone').innerHTML = Cadastro[id].telefone
-       document.getElementById('lblendereco').innerHTML = Cadastro[id].endereco
-       document.getElementById('lblstatus').innerHTML = Cadastro[id].status
+       document.getElementById('lblnome').value = Cadastro[id].nome
+       document.getElementById('lblemail').value = Cadastro[id].email
+       document.getElementById('lbltelefone').value = Cadastro[id].telefone
+       document.getElementById('lblendereco').value = Cadastro[id].endereco
+       document.getElementById('lblstatus').value = Cadastro[id].status
     }
 }
 

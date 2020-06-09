@@ -1,32 +1,82 @@
-<!DOCTYPE html>
 <html lang="en">
-    
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/alterarsenha.css">
+    <script src="https://kit.fontawesome.com/34a5d1d112.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inconsolata&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/painel.css">
     <script src="js/login.js"></script>
     <script src="js/perfil.js"></script>
-    <title>Alterar Perfil</title>
+    <title>Início</title>
 </head>
 <body>
-        <div class="hero">
-            <div class="form-box">
-                <h1>alterar Perfil</h1>
-                <form id="login" class="inputs">
-                    <input id="txtnome" type="text" name="" placeholder="Name">
-                    <input id="txtemail" type="text" name="" placeholder="Email">
-                    <input id="txttelefone" type="text" name="" placeholder="Phone">
-                    <input id="txtendereco" type="text" name="" placeholder="Address">
-                    <button onclick="alterarPerfil()" class="submit-btn" id="botao">Save</button>
-                    <a href="index.html">Voltar</a>
-                </form>
+    <div class="wrapper">
+        <div class="sidebar">
+            <h2>404 Error</h2>
+            <ul>
+                <li><a href="Index.html">Home</a></li>
+                <li><a href="painel.html">Painel Administrativo</a></li>
+                <li><a href="perfil.html">Perfil</a></li>
+                <li><a onclick="alterarSenha()" style="cursor: pointer;">Alterar Senha</a></li>
+                <li><a href="login.html">Login/Cadastro</a></li>
+                <li><a style="cursor: pointer;" onclick="logout()">Logout</a></li>
+            </ul>
+            <div class="social_media">
+                <a href="https://github.com/Gaburieru35" target="blank"><i class="fab fa-github-square"></i></a>
+                <a href="https://www.instagram.com/gabriel_hrod/" target="blank"><i class="fab fa-instagram"></i></a>
+                <a href="https://twitter.com/DesuKuningan" target="blank"><i class="fab fa-twitter"></i></a>
             </div>
-        </div>   
+        </div>
+        <div class="main_content">
+            <div class="header">
+                <label id="sessao">Welcome! </label>
+                <script>
+
+                    if(localStorage.getItem('NomeLogado') == "[]" || localStorage.getItem('NomeLogado') == null){
+                        document.getElementById('sessao').innerHTML = 'Welcome!';
+                    }else{
+                        let usuario = localStorage.getItem('NomeLogado')
+                        document.getElementById('sessao').innerHTML = 'Welcome, ' + usuario;
+                    }
+                    
+                </script>
+            </div>
+            <div class="info">
+                <div class="box">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-6">
+                                <h2>Informações Pessoais</h2><br>
+                                <label for="">Nome:</label>
+                                <input id="lblnome" for="" readonly>
+
+                                <label for="">Email:</label>
+                                <input id="lblemail" for="" readonly><br>
+
+                                <label for="">Telefone:</label>
+                                <input id="lbltelefone" for="" readonly>
+
+                                <label for="">Endereço:</label>
+                                <input id="lblendereco" for="" readonly><br>
+
+                                <label for="">Status da conta:</label>
+                                <input id="lblstatus" for="" readonly>
+
+                            </div>
+                            <div class="col-6">
+                                <a hidden>Despesas</a><br>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
+<script>verPerfil()</script>
