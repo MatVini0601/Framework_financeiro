@@ -30,5 +30,6 @@ function alterarPerfil(){
         localStorage.setItem('UsuarioLogado',Cadastro[id].email)
         localStorage.setItem('NomeLogado',Cadastro[id].nome)
         alert('Dados alterados com sucesso')
+        window.location.replace('perfil.html')
     }
 }
