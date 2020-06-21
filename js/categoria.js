@@ -10,7 +10,7 @@ function openForm() {
     if(localStorage.getItem('Categorias') == null){
       localStorage.setItem('Categorias',"[]")
       let Categorias = JSON.parse(localStorage.getItem('Categorias'))
-      let id = Categorias.length;
+      let id = Date.now();
       let nome = document.getElementById('txtcategoria').value
                 var CadastroCategoria = {
                     id: id++,nome
@@ -19,7 +19,7 @@ function openForm() {
                 localStorage.setItem('Categorias',JSON.stringify(Categorias))
     }else{
       let Categorias = JSON.parse(localStorage.getItem('Categorias'))
-      let id = Categorias.length;
+      let id = Date.now();
       let nome = document.getElementById('txtcategoria').value
                 var CadastroCategoria = {
                     id: id++,nome
@@ -51,7 +51,7 @@ function openForm() {
     let linhaca = "";
     Categorias.forEach(element => {
       let row = document.getElementById("txtcategoria");
-        linhaca += "<option value="+element.nome+">"+element.nome+"</option>"
+        linhaca += "<option value="+element.id+">"+element.nome+"</option>"
         row.innerHTML = linhaca;
        });
   }
@@ -60,18 +60,21 @@ function openForm() {
     if(localStorage.getItem('Contas') == null){
       localStorage.setItem('Contas',"[]")
       let Contas = JSON.parse(localStorage.getItem('Contas'))
-      let id = Contas.length;
+      let categoria = JSON.parse(localStorage.getItem('Categorias'))
+      let id = Date.now();
       let titulo = document.getElementById('txttitulo').value
-      let categoria = document.getElementById('txtcategoria').value
+      let cat = document.getElementById('txtcategoria').value
+
+      dados = localizar(cat)
       let tipo = document.getElementById('txttipo').value
                 var CadastroContas = {
-                    id: id++,titulo,categoria,tipo
+                    id: id++,titulo,categoria:dados,tipo
                 }
                 Contas.push(CadastroContas)
                 localStorage.setItem('Contas',JSON.stringify(Contas))
     }else{
       let Contas = JSON.parse(localStorage.getItem('Contas'))
-      let id = Contas.length;
+      let id = Date.now();
       let titulo = document.getElementById('txttitulo').value
       let categoria = document.getElementById('txtcategoria').value
       let tipo = document.getElementById('txttipo').value
@@ -105,7 +108,7 @@ function openForm() {
 
     ContasLancadas.forEach(element => {
       let row = document.getElementById("categoria");
-      linhacat += "<label>"+element.categoria+"</label><br>"
+      linhacat += "<label>"+element.categoria.nome+"</label><br>"
       row.innerHTML = linhacat;
       });
 
@@ -116,4 +119,12 @@ function openForm() {
       linhatipe += "<label>"+element.tipo+"</label><br>"
       row.innerHTML = linhatipe;
       });
+  }
+
+  function localizar(id){
+    let Categorias = JSON.parse(localStorage.getItem('Categorias'))
+    let index = Categorias.findIndex(categoria => categoria.id == id)
+
+    return Categorias[index]
+
   }
