@@ -62,21 +62,27 @@
 
                                         </div>
                                     </div>
-                                    <div class="col-3">
+                                    <div class="col-2">
                                         <h3>Title</h3><br>
                                        <div class="col-12" id="titulo">
 
                                        </div>
                                     </div>
-                                    <div class="col-3">
+                                    <div class="col-2">
                                         <h3>Type</h3><br>
                                       <div class="col-12" id="tipo">
 
                                       </div>
                                     </div>
-                                    <div class="col-3">
+                                    <div class="col-2">
                                         <h3>Category</h3><br>
                                     <div class="col-12" id="categoria">
+
+                                    </div>
+                                    </div>
+                                    <div class="col-2">
+                                        <h3>Function</h3><br>
+                                    <div class="col-12" id="functions">
 
                                     </div>
                                     </div>
@@ -102,6 +108,32 @@
                                         </select><br><br><br>
                                     
                                         <button class="btn" onclick="lancarContas()">Add</button>
+                                        <button type="submit" class="btn cancel" onclick="closeForm()">Close</button>
+                                        <script>ListarCatContas()</script>
+                                    </form>
+                                </div>
+                            </div>
+
+                            <div class="row" id="add">
+                                
+                                <div class="form-popup" id="addcontaCategorias">
+                                    <form class="form-container">
+                                        <input type="text" placeholder="Title" id="txtcontaid" hidden><br>
+                                        <label for="">Title</label><br>
+                                        <input type="text" placeholder="Title" id="txtcontatitulo"><br>
+
+                                        <label for="">Type</label><br>
+                                        <select type="text" placeholder="Type" id="txtcontatipo">
+                                            <option value="Receita">Receita</option>
+                                            <option value="Despesa">Despesa</option>
+                                        </select><br>
+                                    
+                                        <label for="">Category</label><br>
+                                        <select type="text" placeholder="Category Name" id="txtcontacategoria">
+
+                                        </select><br><br><br>
+                                    
+                                        <button class="btn" onclick="SalvarConta()">Salvar</button>
                                         <button type="submit" class="btn cancel" onclick="closeForm()">Close</button>
                                         <script>ListarCatContas()</script>
                                     </form>
