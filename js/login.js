@@ -96,7 +96,7 @@ function logout(){
 
     let logout = confirm('Você deseja realmente sair?')
 
-    if(logout = true){
+    if(logout == true){
         let usuario = localStorage.getItem('UsuarioLogado')
         let nomeUsuario = localStorage.getItem('NomeLogado')
         let idAtual = localStorage.getItem('IdAtual')

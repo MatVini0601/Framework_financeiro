@@ -56,7 +56,7 @@ function openForm() {
          let linhab = "";
       Categorias.forEach(element => {
         let row = document.getElementById("edit");
-          linhab += "<button onclick='Editar("+element.id+")'>Editar</button><br>"
+          linhab += "<button class='btn' onclick='Editar("+element.id+")'>Editar</button><br>"
           row.innerHTML = linhab;
          });
   }
@@ -142,7 +142,7 @@ function openForm() {
       let linhati = "";
       ContasLancadas.forEach(element => {
         let row = document.getElementById("functions");
-          linhati += "<button onclick='EditarConta("+element.id+")'>Editar</button><br>"
+          linhati += "<button class='btn' onclick='EditarConta("+element.id+")'>Editar</button><br>"
           row.innerHTML = linhati;
          });
   }
@@ -262,17 +262,39 @@ function openForm() {
     let c = confirm('Esta categorias sera apagada. Continuar ?')
 
     if(c == true){
-      ContasLancadas.forEach(element => {
-        console.log(element.categoria)
-        if(element.categoria.nome == item.nome){
-          ContasLancadas.splice(element,1)
-        }
-      });
+      var i = 0;
+      debugger
+      do{
+        if(ContasLancadas[i].categoria.id === item.id){
+          console.log(ContasLancadas[i])
+          ContasLancadas.splice(i,1)
+        }else{
+          i++
+        } 
+      }
+      while (i < ContasLancadas.length) 
+        
       Categorias.splice(index,1)
       localStorage.setItem('Categorias',JSON.stringify(Categorias))
-      localStorage.setItem('Contas',JSON.stringify(Contas))
+      localStorage.setItem('Contas',JSON.stringify(ContasLancadas))
     }else{
       alert('Operação cancelada')
     }
     
+  }
+
+  function apagarConta(){
+    debugger
+    let ContasLancadas = JSON.parse(localStorage.getItem('Contas'))
+    let id = document.getElementById('txtcontaid').value
+    let index = localizarEditConta(id)
+
+    let c = confirm('Esta conta sera apagada. Continuar ?')
+
+    if(c == true){
+      ContasLancadas.splice(index,1)
+      localStorage.setItem('Contas',JSON.stringify(ContasLancadas))
+    }else{
+      alert('Operação cancelada')
+    }
   }

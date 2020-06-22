@@ -1,10 +1,11 @@
 function verPerfil(){
     let Cadastro = JSON.parse(localStorage.getItem('CadastroCliente'));
     let id = JSON.parse(localStorage.getItem('IdAtual'))
-     console.log(Cadastro[id].nome) 
+     console.log(id) 
 
-    if(id == null){
+    if(id == null || id.length == 0){
         alert('faça login primeiro')
+        window.location.replace('index.html')
     }else{
        document.getElementById('lblnome').value = Cadastro[id].nome
        document.getElementById('lblemail').value = Cadastro[id].email
@@ -30,6 +31,20 @@ function alterarPerfil(){
         localStorage.setItem('UsuarioLogado',Cadastro[id].email)
         localStorage.setItem('NomeLogado',Cadastro[id].nome)
         alert('Dados alterados com sucesso')
-        window.location.replace('perfil.html')
+        window.location.replace('index.html')
+    }
+}
+
+function editarPerfil(){
+    let Cadastro = JSON.parse(localStorage.getItem('CadastroCliente'));
+    let id = JSON.parse(localStorage.getItem('IdAtual'))
+
+    if(id == null){
+        alert('faça login primeiro')
+    }else{
+       document.getElementById('txtnome').value = Cadastro[id].nome
+       document.getElementById('txtemail').value = Cadastro[id].email
+       document.getElementById('txttelefone').value = Cadastro[id].telefone
+       document.getElementById('txtendereco').value = Cadastro[id].endereco
     }
 }

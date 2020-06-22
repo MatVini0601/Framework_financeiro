@@ -18,7 +18,7 @@
     <div class="wrapper">
         <div class="sidebar">
             <h2>404 Error</h2>
-            <ul>
+            <ul id="logado">
                 <li><a href="Index.html">Home</a></li>
                 <li><a href="painel.html">Painel Administrativo</a></li>
                 <li><a href="cadastrarcategorias.html">Categorias</a></li>
@@ -44,6 +44,13 @@
                     }else{
                         let usuario = localStorage.getItem('NomeLogado')
                         document.getElementById('sessao').innerHTML = 'Welcome, ' + usuario;
+                        document.getElementById('logado').innerHTML = "<li><a href='index.html'>Home</a></li>"+
+                                                                        "<li><a href='painel.html'>Painel Administrativo</a></li>"+
+                                                                        "<li><a href='cadastrarcategorias.html'>Categorias</a></li>"+
+                                                                        "<li><a href='contas.html'>Contas</a></li>"+
+                                                                        "<li><a href='perfil.html'>Perfil</a></li>"+
+                                                                        "<li><a onclick='alterarSenha()' style='cursor:pointer;'>Alterar Senha</a></li>"+
+                                                                        "<li><a style='+cursor: pointer;+' onclick='logout()'>Logout</a></li>"
                     }
                     
                 </script>
@@ -77,6 +84,20 @@
                             </div>
                         </div>
                     </div>
+                </div>
+            </div>
+            <div class="row" id="add">
+                <a onclick="openForm()">+</a>
+                
+                <div class="form-popup" id="addCategorias">
+                    <form class="form-container">
+                  
+                      <label for="">Categoria</label><br>
+                      <input type="text" placeholder="Category Name" id="txtcategoria"><br>
+                  
+                      <button class="btn" onclick="cadastrarCategoria()">Add</button>
+                      <button type="submit" class="btn cancel" onclick="closeForm()">Close</button>
+                    </form>
                 </div>
             </div>
         </div>
