@@ -12,6 +12,7 @@
 
     <link rel="stylesheet" href="css/painel.css">
     <script src="js/login.js"></script>
+    <script src="js/administrativo.js"></script>
     <title>Início</title>
 </head>
 <body>
@@ -60,44 +61,82 @@
                     <div class="container-fluid">
                         <div class="row">
                             <div class="col-4">
-                                <a>Receitas</a><br>
+                                <h5>Receitas</h5><br>
                                 <label id="labela" for="">0</label>
                             </div>
                             <div class="col-4">
-                                <a>Despesas</a><br>
+                                <h5>Despesas</h5><br>
                                 <label id="labela" for="">0</label>
                             </div>
                             <div class="col-4">
-                                <a>Saldo</a><br>
+                                <h5>Saldo</h5><br>
                                 <label id="labela" for="">0</label>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="row" id="Tabela">
+                            <div class="col-2">
+                                <h4>ID</h4><br>
+                                <div id="id" class="col-12">
+
+                                </div>                                        
+                            </div>
+                            <div class="col-2">
+                                <h4>Name</h4><br>
+                                <div id="nome" class="col-12">
+                                    
+                                </div>
+                            </div>
+                            <div class="col-2">
+                                <h4>Value</h4><br>
+                                <div id="valor" class="col-12">
+                                    
+                                </div>
+                            </div>
+                            <div class="col-2">
+                                <h4>Date</h4><br>
+                                <div id="data" class="col-12">
+                                    
+                                </div>
+                            </div>
+                            <div class="col-2">
+                                <h4>Hour</h4><br>
+                                <div id="hora" class="col-12">
+                                    
+                                </div>
+                            </div>
+                            <div class="col-2">
+                                <h4>Functions</h4><br>
+                                <div id="edit" class="col-12">
+                                    
+                                </div>
                             </div>
                         </div>
                         <div class="row" id="Tabela">
-                            <div class="col-4">
-                                <h3>Recipe</h3><br>
-                            </div>
-                            <div class="col-4">
-                                <h3>Expenses</h3><br>
-                            </div>
-                            <div class="col-4">
-                                <h3>Balance</h3><br>
+                            <table>
+                                <!--ID,NOME,VALOR,DATA,HORA-->
+                            </table>
+                        </div>
+                        <div class="row">
+                            <div class="row" id="add">
+                                <a onclick="openForm()">+</a>
+                                
+                                <div class="form-popup" id="addContas">
+                                    <form class="form-container">
+                                  
+                                      <label for="">Contas</label><br>
+                                      <select type="text" placeholder="Name" id="txtcontanome">
+                                        
+                                    </select><br>
+                                      <input type="text" placeholder="Value" id="txtvalor"><br>
+                                  
+                                      <button class="btn" onclick="lancarContas()">Add</button>
+                                      <button type="submit" class="btn cancel" onclick="closeForm()">Close</button>
+                                    </form>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
-            <div class="row" id="add">
-                <a onclick="openForm()">+</a>
-                
-                <div class="form-popup" id="addCategorias">
-                    <form class="form-container">
-                  
-                      <label for="">Categoria</label><br>
-                      <input type="text" placeholder="Category Name" id="txtcategoria"><br>
-                  
-                      <button class="btn" onclick="cadastrarCategoria()">Add</button>
-                      <button type="submit" class="btn cancel" onclick="closeForm()">Close</button>
-                    </form>
                 </div>
             </div>
         </div>

@@ -93,5 +93,7 @@ body{
     margin-top: 5%;
     font-size: 20px;
     margin-left: 20px;
+    align-content: center;
+    text-align: center;
     font-family: 'Inconsolata', monospace;
 }

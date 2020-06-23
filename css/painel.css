@@ -141,6 +141,57 @@ body{
     margin-top: 30px;
 }
 
+.info .box .container-fluid .row a{
+    text-align: center;
+    font-size: 40px;
+    background-color: #a663e6;
+    width: 60px;
+    height: 60px;
+    color: #fff;
+    border-radius: 50%;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.info .box .container-fluid .form-popup input{
+    font-family: 'Inconsolata', monospace;
+    width: 200px;
+    align-self: left;
+    padding: 10px 0;
+    margin: 5px 0;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    border-top: 0;
+    border-left: 0;
+    border-right: 0;
+    border-bottom: 1px solid #999;
+    outline: none;
+    background: transparent;
+}
+
+.info .box .container-fluid .form-popup label{
+    margin-top: 20px;
+    font-family: 'Inconsolata', monospace;
+}
+
+.form-popup{
+    width: 380px;
+    height: 250px;
+    position: relative;
+    top: -150px;
+    left: 30px;
+    margin: 6% auto;
+    background: #fff;
+    padding: 5px;
+    display: none;
+    border-radius: 30px;
+}
+
+#add{
+    top: 760px;
+    position: fixed;
+}
+
 #Tabela{
     overflow-y: scroll;
     overflow-x: hidden;
