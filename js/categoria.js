@@ -80,7 +80,7 @@ function openForm() {
   
   function localizarEditConta(id){
     let ContasLancadas = JSON.parse(localStorage.getItem('Contas'))
-    let index = ContasLancadas.findIndex(categoria => categoria.id == id)
+    let index = ContasLancadas.findIndex(conta => conta.id == id)
 
     return index
   }

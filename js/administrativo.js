@@ -50,7 +50,7 @@ function openForm() {
       let data = now.getDate()+"/"+now.getMonth()+"/"+now.getFullYear()
       let hora = now.getHours()+":"+now.getMinutes()+":"+now.getSeconds()
 
-      dados = localizarLancConta(Contaid)
+      dados = localizarConta(Contaid)
                 var LancamentoConta = {
                     id: id++ ,contarelacionada:dados,valor,data,hora
                 }
@@ -64,7 +64,7 @@ function openForm() {
       let data = now.getDate()+"/"+now.getMonth()+"/"+now.getFullYear()
       let hora = now.getHours()+":"+now.getMinutes()+":"+now.getSeconds()
 
-      dados = localizarLancConta(Contaid)
+      dados = localizarConta(Contaid)
                 var LancamentoConta = {
                   id: id++ ,contarelacionada:dados,valor,data,hora
                 }
@@ -79,12 +79,10 @@ function openForm() {
     debugger
     while(i < ContasLancadas.length){
       let id = ContasLancadas[i].contarelacionada.id
-      let local = localizarEditLancConta(id)
+      let local = localizarConta(id)
       if(local == null || local === "undefined"){
         ContasLancadas.splice(i,1)
       }else{
-        alert('2')
-        console.log(local)
         ContasLancadas[i].contarelacionada = local
       }
       i++
@@ -209,18 +207,6 @@ function openForm() {
   }
 
   function localizarConta(id){
-    let ContasLancadas = JSON.parse(localStorage.getItem('Contas'))
-    let index = ContasLancadas.findIndex(conta => conta.id == id)
-
-    return ContasLancadas[index]
-  }
-  function localizarLancConta(id){
-    let ContasLancadas = JSON.parse(localStorage.getItem('Contas'))
-    let index = ContasLancadas.findIndex(conta => conta.id == id)
-
-    return ContasLancadas[index]
-  }
-  function localizarEditLancConta(id){
     let ContasLancadas = JSON.parse(localStorage.getItem('Contas'))
     let index = ContasLancadas.findIndex(conta => conta.id == id)
 
