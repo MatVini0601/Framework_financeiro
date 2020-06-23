@@ -124,9 +124,16 @@ function openForm() {
     let c = confirm('Esta categoria e todas as contas cadastradas com ela serão apagadas. Continuar ?')
 
     if(c == true){
-      var i = 0;
-      debugger
+      let i = 0;
       do{
+        Categorias = JSON.parse(localStorage.getItem('Categorias'))
+        if(Categorias.length == 1){
+          Categorias = []
+          localStorage.setItem('Categorias',JSON.stringify(Categorias))
+        }else{
+          Categorias.splice(index,1)
+          localStorage.setItem('Categorias',JSON.stringify(Categorias))
+        }
         if(ContasLancadas[i].categoria.id === item.id){
           console.log(ContasLancadas[i])
           ContasLancadas.splice(i,1)
@@ -136,8 +143,8 @@ function openForm() {
       }
       while (i < ContasLancadas.length) 
         
-      Categorias.splice(index,1)
-      localStorage.setItem('Categorias',JSON.stringify(Categorias))
+
+      
       localStorage.setItem('Contas',JSON.stringify(ContasLancadas))
     }else{
       alert('Operação cancelada')
