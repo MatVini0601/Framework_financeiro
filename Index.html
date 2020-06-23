@@ -14,6 +14,7 @@
     
     <script src="js/login.js"></script>
     <script src="js/perfil.js"></script>
+    <script src="js/administrativo.js"></script>
     <title>Início</title>
 </head>
 <body>
@@ -61,12 +62,13 @@
                <div class="row">
                    <div class="col-6">
                        <label for="">Receitas</label><br>
-                       <label for="">0</label>
+                       <label id="qreceita" for="">0</label>
                    </div>
                    <div class="col-6">
                        <label for="">Despesas</label><br>
-                       <label for="">0</label>
+                       <label id="qdespesa" for="">0</label>
                    </div>
+                   <script>quantidade()</script>
                </div>
             </div>
         </div>

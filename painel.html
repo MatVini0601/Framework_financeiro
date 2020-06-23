@@ -125,7 +125,6 @@
                                     <form class="form-container">
                                   
                                       <label for="">Contas</label><br>
-                                      <input type="text" placeholder="Category Name" id="txtcontaid" hidden><br>
                                       <select type="text" placeholder="Name" id="txtcontanome">
                                         
                                     </select><br>
@@ -134,6 +133,26 @@
                                       <button class="btn" onclick="lancarContas()">Add</button>
                                       <button type="submit" class="btn cancel" onclick="closeForm()">Close</button>
                                     <script>ListarContas()</script>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="row" id="add">
+                                
+                                <div class="form-popup" id="addContasEdit">
+                                    <form class="form-container">
+                                  
+                                      <label for="">Contas</label><br>
+                                      <input type="text" placeholder="Category Name" id="txtcontaid" hidden><br>
+                                      <select type="text" placeholder="Name" id="txteditcontanome">
+                                        
+                                    </select><br>
+                                      <input type="text" placeholder="Value" id="txteditvalor"><br>
+                                  
+                                      <button class="btn" onclick="SalvarConta()">Save</button>
+                                      <button type="submit" class="btn cancel" onclick="closeForm()">Close</button>
+                                    <script> ListarEditContas()</script>
                                     </form>
                                 </div>
                             </div>
