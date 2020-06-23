@@ -169,6 +169,21 @@ body{
     background: transparent;
 }
 
+.info .box .container-fluid .form-popup select{
+    font-family: 'Inconsolata', monospace;
+    width: 200px;
+    align-self: left;
+    padding: 10px 0;
+    margin: 5px 0;
+    margin-top: 5px;
+    border-top: 0;
+    border-left: 0;
+    border-right: 0;
+    border-bottom: 1px solid #999;
+    outline: none;
+    background: transparent;
+}
+
 .info .box .container-fluid .form-popup label{
     margin-top: 20px;
     font-family: 'Inconsolata', monospace;
@@ -178,9 +193,9 @@ body{
     width: 380px;
     height: 250px;
     position: relative;
-    top: -150px;
+    top: -200px;
     left: 30px;
-    margin: 6% auto;
+    margin: 0% auto;
     background: #fff;
     padding: 5px;
     display: none;
