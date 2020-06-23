@@ -75,8 +75,23 @@ function openForm() {
 
   function ListarContasLancadas(){
     let ContasLancadas = JSON.parse(localStorage.getItem('ContasLancadas'))
+    i = 0
+    debugger
+    while(i < ContasLancadas.length){
+      let id = ContasLancadas[i].contarelacionada.id
+      let local = localizarEditLancConta(id)
+      if(local == null || local === "undefined"){
+        ContasLancadas.splice(i,1)
+      }else{
+        alert('2')
+        console.log(local)
+        ContasLancadas[i].contarelacionada = local
+      }
+      i++
+    }
+    localStorage.setItem('ContasLancadas',JSON.stringify(ContasLancadas))
     let linha = ""
-
+    ContasLancadas = JSON.parse(localStorage.getItem('ContasLancadas'))
 
     ContasLancadas.forEach(element => {
     let row = document.getElementById("id");
@@ -205,6 +220,12 @@ function openForm() {
 
     return ContasLancadas[index]
   }
+  function localizarEditLancConta(id){
+    let ContasLancadas = JSON.parse(localStorage.getItem('Contas'))
+    let index = ContasLancadas.findIndex(conta => conta.id == id)
+
+    return ContasLancadas[index]
+  }
 
   function localizarIndiceConta(id){
     let ContasLancadas = JSON.parse(localStorage.getItem('ContasLancadas'))
@@ -232,4 +253,8 @@ function openForm() {
       document.getElementById('qdespesa').innerHTML = qdespesa
       document.getElementById('qreceita').innerHTML = qreceita
     });
+  }
+
+  function atualizar(){
+
   }
