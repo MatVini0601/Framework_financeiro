@@ -236,8 +236,8 @@ function openForm() {
       }else{
         qdespesa++
       }
-      document.getElementById('qdespesa').innerHTML = qdespesa
-      document.getElementById('qreceita').innerHTML = qreceita
+      document.getElementById('qdespesa').innerHTML = despesa
+      document.getElementById('qreceita').innerHTML = receita
     });
   }
 
