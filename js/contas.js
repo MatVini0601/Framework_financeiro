@@ -161,7 +161,7 @@ function lancarContas(){
   
 function ListarCatContas(){
     let Categorias = JSON.parse(localStorage.getItem('Categorias'))
-    if(validar(Categorias) == true){
+    if(verificar(Categorias) == true){
       let linhaca = "";
       Categorias.forEach(element => {
         let row = document.getElementById("txtcategoria");
