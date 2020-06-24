@@ -36,25 +36,30 @@ function openForm() {
   function listarCategoria(){
     let Categorias = JSON.parse(localStorage.getItem('Categorias'))
     let linhai = "";
-    Categorias.forEach(element => {
-     let row = document.getElementById("id");
-       linhai += "<label>"+element.id+"</label><br>"
-       row.innerHTML = linhai;
-      });
 
-      let linhac = "";
+    if(Categorias == null || Categorias == "[]"){
+      alert("Não há nada para ser listado. Tente cadastrar uma categoria :)")
+    }else{
       Categorias.forEach(element => {
-        let row = document.getElementById("categoria");
-          linhac += "<label>"+element.nome+"</label><br>"
-          row.innerHTML = linhac;
+        let row = document.getElementById("id");
+          linhai += "<label>"+element.id+"</label><br>"
+          row.innerHTML = linhai;
          });
-
-         let linhab = "";
-      Categorias.forEach(element => {
-        let row = document.getElementById("edit");
-          linhab += "<button class='btn' onclick='Editar("+element.id+")'>Editar</button><br>"
-          row.innerHTML = linhab;
-         });
+   
+        let linhac = "";
+        Categorias.forEach(element => {
+          let row = document.getElementById("categoria");
+            linhac += "<label>"+element.nome+"</label><br>"
+            row.innerHTML = linhac;
+          });
+  
+        let linhab = "";
+        Categorias.forEach(element => {
+          let row = document.getElementById("edit");
+            linhab += "<button class='btn' onclick='Editar("+element.id+")'>Editar</button><br>"
+            row.innerHTML = linhab;
+          });
+        }
   }
 
   function localizar(id){

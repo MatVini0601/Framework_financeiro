@@ -38,45 +38,48 @@ function openForm() {
 
   function lancarContas(){
     let Contas = JSON.parse(localStorage.getItem('ContasLancadas'))
-
-    if(localStorage.getItem('ContasLancadas') == null){
-      localStorage.setItem('ContasLancadas',"[]")
-      let Contas = JSON.parse(localStorage.getItem('ContasLancadas'))
-      let id = Date.now()
-      let Contaid = document.getElementById('txtcontanome').value
-      let valor = document.getElementById('txtvalor').value
-
-      let now = new Date
-      let data = now.getDate()+"/"+now.getMonth()+"/"+now.getFullYear()
-      let hora = now.getHours()+":"+now.getMinutes()+":"+now.getSeconds()
-
-      dados = localizarConta(Contaid)
-                var LancamentoConta = {
+    let contasCadastradas = JSON.parse(localStorage.getItem('Contas'))
+    if(verificar(contasCadastradas) == true){
+      if(localStorage.getItem('ContasLancadas') == null){
+        localStorage.setItem('ContasLancadas',"[]")
+        let Contas = JSON.parse(localStorage.getItem('ContasLancadas'))
+        let id = Date.now()
+        let Contaid = document.getElementById('txtcontanome').value
+        let valor = document.getElementById('txtvalor').value
+  
+        let now = new Date
+        let data = now.getDate()+"/"+now.getMonth()+"/"+now.getFullYear()
+        let hora = now.getHours()+":"+now.getMinutes()+":"+now.getSeconds()
+  
+        dados = localizarConta(Contaid)
+                  var LancamentoConta = {
+                      id: id++ ,contarelacionada:dados,valor,data,hora
+                  }
+                  Contas.push(LancamentoConta)
+                  localStorage.setItem('ContasLancadas',JSON.stringify(Contas))
+      }else{
+        let id = Date.now()
+        let Contaid = document.getElementById('txtcontanome').value
+        let valor = document.getElementById('txtvalor').value
+        let now = new Date
+        let data = now.getDate()+"/"+now.getMonth()+"/"+now.getFullYear()
+        let hora = now.getHours()+":"+now.getMinutes()+":"+now.getSeconds()
+  
+        dados = localizarConta(Contaid)
+                  var LancamentoConta = {
                     id: id++ ,contarelacionada:dados,valor,data,hora
-                }
-                Contas.push(LancamentoConta)
-                localStorage.setItem('ContasLancadas',JSON.stringify(Contas))
+                  }
+                  Contas.push(LancamentoConta)
+                  localStorage.setItem('ContasLancadas',JSON.stringify(Contas))
+      }
     }else{
-      let id = Date.now()
-      let Contaid = document.getElementById('txtcontanome').value
-      let valor = document.getElementById('txtvalor').value
-      let now = new Date
-      let data = now.getDate()+"/"+now.getMonth()+"/"+now.getFullYear()
-      let hora = now.getHours()+":"+now.getMinutes()+":"+now.getSeconds()
-
-      dados = localizarConta(Contaid)
-                var LancamentoConta = {
-                  id: id++ ,contarelacionada:dados,valor,data,hora
-                }
-                Contas.push(LancamentoConta)
-                localStorage.setItem('ContasLancadas',JSON.stringify(Contas))
-    }
+      alert('Não há contas cadastradas. Cadastre uma :)')
+    }    
   }
 
   function ListarContasLancadas(){
     let ContasLancadas = JSON.parse(localStorage.getItem('ContasLancadas'))
     i = 0
-    debugger
     while(i < ContasLancadas.length){
       let id = ContasLancadas[i].contarelacionada.id
       let local = localizarConta(id)
@@ -230,17 +233,32 @@ function openForm() {
   function quantidade(){
     let ContasLancadas = JSON.parse(localStorage.getItem('ContasLancadas'))
 
-    ContasLancadas.forEach(element => {
-      if(element.contarelacionada.tipo == "Receita"){
-        qreceita++
-      }else{
-        qdespesa++
-      }
-      document.getElementById('qdespesa').innerHTML = despesa
-      document.getElementById('qreceita').innerHTML = receita
-    });
+    i = 0
+          while(i < ContasLancadas.length){
+            if(ContasLancadas[i].contarelacionada.tipo === "Receita"){
+              receita += parseInt(ContasLancadas[i].valor)
+              i++
+              document.getElementById('qreceita').innerHTML = receita
+            }else{
+              despesa += parseInt(ContasLancadas[i].valor)
+              i++
+              document.getElementById('qdespesa').innerHTML = despesa
+            }
+            let saldo = receita - despesa
+            document.getElementById('qsaldo').innerHTML = saldo
+            if(saldo <= 0){
+              document.getElementById('qsaldo').style.color = '#fc0303'
+            }else{
+              document.getElementById('qsaldo').style.color = '#13a100'
+            }
+        }
   }
 
-  function atualizar(){
-
+  function verificar(){
+    let Categorias = JSON.parse(localStorage.getItem('Categorias'))
+    if(Categorias){
+      return true 
+    }else{
+      return false
+    }
   }
