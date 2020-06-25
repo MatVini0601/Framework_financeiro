@@ -74,6 +74,40 @@
                     </div>
                    <script>quantidade()</script>
                </div>
+               <div class="row" id="donutchart">                 
+
+                <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+                <script type="text/javascript">
+                  google.charts.load("current", {packages:["corechart"]});
+                  google.charts.setOnLoadCallback(drawChart);
+                  function drawChart() {
+
+                    let saldo = parseInt(document.getElementById('qsaldo').innerHTML);
+                    if(saldo < 0){
+                        saldo = 0;
+                    }
+                    let receita  = parseInt(document.getElementById('qreceita').innerHTML);
+                    let despesa  = parseInt(document.getElementById('qdespesa').innerHTML);
+
+                    var data = google.visualization.arrayToDataTable([
+                      ['Task', 'Saldo'],
+                      ['Saldo',     saldo],
+                      ['Receita',   receita],
+                      ['Despesa',  despesa]
+                    ]);
+            
+                    var options = {
+                      title: 'Gráfico Foda',
+                      pieHole: 0.4,
+                      height: 600
+                    };
+            
+                    var chart = new google.visualization.PieChart(document.getElementById('donutchart'));
+                    chart.draw(data, options);
+                  }
+                  
+                </script>
+               </div>
             </div>
         </div>
     </div>
