@@ -58,23 +58,28 @@ function lancarContas(){
     ContasLancadas.forEach(element => {
       i = 0
       while(i < 5){
-        if(coluna[i] === "id"){
-          conteudo = ContasLancadas[indice].id
-        }else if(coluna[i] === "titulo"){
-          conteudo = ContasLancadas[indice].titulo
-        }else if(coluna[i] === "categoria"){
-          conteudo = ContasLancadas[indice].categoria.nome
-        }else if(coluna[i] === "tipo"){
-          conteudo = ContasLancadas[indice].tipo
-        }else{
-          conteudo = "<button class='btn' onclick='EditarConta("+element.id+")'>Editar</button><br>"
+        switch(coluna[i]){
+          case 'id':
+            conteudo = ContasLancadas[indice].id
+            break;
+          case 'titulo':
+            conteudo = ContasLancadas[indice].titulo
+            break;
+          case 'categoria':
+            conteudo = ContasLancadas[indice].categoria.nome
+            break;
+          case 'tipo':
+            conteudo = ContasLancadas[indice].tipo
+            break;
+          case 'functions':
+            conteudo = "<button class='btn' onclick='EditarConta("+element.id+")'>Editar</button><br>"
+            break;
         }
         let row = document.getElementById(coluna[i]);
         linha = "<label>"+conteudo+"</label><br>"
         i++
         row.innerHTML += linha
       }
-      
       indice++
       });
   }

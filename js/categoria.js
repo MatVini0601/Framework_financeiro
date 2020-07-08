@@ -147,9 +147,6 @@ function openForm() {
         } 
       }
       while (i < ContasLancadas.length) 
-        
-
-      
       localStorage.setItem('Contas',JSON.stringify(ContasLancadas))
     }else{
       alert('Operação cancelada')

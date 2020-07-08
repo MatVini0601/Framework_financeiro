@@ -13,8 +13,9 @@ function Cadastra(){
  if(nome == "" || email == "" || senha == "" || telefone == "" || endereco == ""){
     alert('digite todos os campos')
     }else{
-        if(localStorage.getItem('CadastroCliente') == null){
+        if(!localStorage.getItem('CadastroCliente')){
             localStorage.setItem('CadastroCliente', '[]')
+        }
             Cadastro = JSON.parse(localStorage.getItem('CadastroCliente'))
             Cadastro.forEach(element => {
                 if(element.email == email){
@@ -33,25 +34,6 @@ function Cadastra(){
                 localStorage.setItem('CadastroCliente',JSON.stringify(Cadastro))
                 v = 0
             }
-        }else{
-            Cadastro.forEach(element => {
-                if(element.email == email){
-                    v = 1
-                }
-            });
-            if( v == 1){
-                alert('email ja cadastrado')
-                v = 0;
-            }else{
-                let id = Cadastro.length;
-                var Cliente = {
-                    id: id++,nome,email,senha,telefone,endereco,status
-                }
-                Cadastro.push(Cliente)
-                localStorage.setItem('CadastroCliente',JSON.stringify(Cadastro))
-                v = 0
-            }
-        }
         Limpar()
     }
 }
@@ -59,31 +41,33 @@ function Cadastra(){
 function Logar(){
     let email = document.getElementById('txtlemail').value;
     let senha = document.getElementById('txtlsenha').value;
+    let csenha = ''
+    let nome = ''
+    let id = ''
 
     Cadastro = JSON.parse(localStorage.getItem('CadastroCliente'));
 
     if(email == "" || email == null || senha == "" || senha == null){
         alert('Digite todos os campos')
     }
-   Cadastro.forEach(element => {
-        if(element.email == email){
-           if(element.senha == senha){
-               if(element.status == "Ativo"){
-                    window.location.replace('index.html');
-                    alert('Bem vindo '+ element.nome);
-                    localStorage.setItem('UsuarioLogado',element.email)
-                    localStorage.setItem('NomeLogado',element.nome)
-                    localStorage.setItem('IdAtual',JSON.stringify(element.id))
-               }else{
-                   alert('Você esta incapacitado de logar no momento, Por favor entre em contato com o suporte')
-               }
-           }else{
-            alert("Cadastro não encontrado")
-           }     
+    Cadastro.forEach(element => {
+        if(element.email == email && element.senha == senha){
+            nome = element.nome
+            csenha = senha
+            id = element.id
         }
-   });
+    });
+    if(csenha != ''){
+            localStorage.setItem('UsuarioLogado',email)
+            localStorage.setItem('NomeLogado',nome)
+            localStorage.setItem('IdAtual',id)
+            window.location.replace('index.html')
+        }else{
+            alert("Cadastro não encontrado")
+        }
+        
+    }
 
-}
 
 function Limpar(){
     var array = document.getElementsByTagName("input");
@@ -96,7 +80,7 @@ function logout(){
 
     let logout = confirm('Você deseja realmente sair?')
 
-    if(logout == true){
+    if(logout){
         let usuario = localStorage.getItem('UsuarioLogado')
         let nomeUsuario = localStorage.getItem('NomeLogado')
         let idAtual = localStorage.getItem('IdAtual')
@@ -109,8 +93,6 @@ function logout(){
         localStorage.setItem('NomeLogado',nomeUsuario)
         localStorage.setItem('IdAtual',idAtual)
         window.location.reload('index.html')
-    }else{
-
     }
 }
 
@@ -118,10 +100,8 @@ function alterarSenha(){
 
     Cadastro = JSON.parse(localStorage.getItem('CadastroCliente'))
     id = JSON.parse(localStorage.getItem('IdAtual'))
-    console.log(id)
-    debugger
 
-        if(id == null || id.length == 0){
+        if(id){
             alert('faça Login Primeiro')
         }else{
             window.location.assign('alterarsenha.html')
@@ -139,7 +119,5 @@ function alterarSenha(){
             localStorage.setItem('CadastroCliente',JSON.stringify(Cadastro))
             window.location.replace('index.html')
             alert('Senha alterada com sucesso')
-            
         }   
-        
 }
