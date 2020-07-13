@@ -38,13 +38,14 @@ function openForm() {
 
   function lancarContas(){
     debugger
-    let Contas = JSON.parse(localStorage.getItem('ContasLancadas'))
+   
     let contasCadastradas = JSON.parse(localStorage.getItem('Contas'))
-    if(verificar(contasCadastradas)){
-      if(!localStorage.getItem('ContasLancadas')){
+    if(!verificar(contasCadastradas)){return}
+      if(!localStorage.getItem('ContasLancadas') || localStorage.getItem('ContasLancadas') == "[]"){
         localStorage.setItem('ContasLancadas',"[]")
       }
-
+      debugger
+        let Contas = JSON.parse(localStorage.getItem('ContasLancadas'))
         let id = Date.now()
         let Cliente = localStorage.getItem('IdAtual')
         let Contaid = document.getElementById('txtcontanome').value
@@ -59,10 +60,6 @@ function openForm() {
                   }
                   Contas.push(LancamentoConta)
                   localStorage.setItem('ContasLancadas',JSON.stringify(Contas))
-
-    }else{
-      alert('Não há contas cadastradas. Cadastre uma :)')
-    }    
   }
 
   function ListarContasLancadas(){
