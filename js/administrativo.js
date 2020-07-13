@@ -37,41 +37,29 @@ function openForm() {
   }
 
   function lancarContas(){
+    debugger
     let Contas = JSON.parse(localStorage.getItem('ContasLancadas'))
     let contasCadastradas = JSON.parse(localStorage.getItem('Contas'))
-    if(verificar(contasCadastradas) == true){
-      if(localStorage.getItem('ContasLancadas') == null){
+    if(verificar(contasCadastradas)){
+      if(!localStorage.getItem('ContasLancadas')){
         localStorage.setItem('ContasLancadas',"[]")
-        let Contas = JSON.parse(localStorage.getItem('ContasLancadas'))
-        let id = Date.now()
-        let Contaid = document.getElementById('txtcontanome').value
-        let valor = document.getElementById('txtvalor').value
-  
-        let now = new Date
-        let data = now.getDate()+"/"+now.getMonth()+"/"+now.getFullYear()
-        let hora = now.getHours()+":"+now.getMinutes()+":"+now.getSeconds()
-  
-        dados = localizarConta(Contaid)
-                  var LancamentoConta = {
-                      id: id++ ,contarelacionada:dados,valor,data,hora
-                  }
-                  Contas.push(LancamentoConta)
-                  localStorage.setItem('ContasLancadas',JSON.stringify(Contas))
-      }else{
-        let id = Date.now()
-        let Contaid = document.getElementById('txtcontanome').value
-        let valor = document.getElementById('txtvalor').value
-        let now = new Date
-        let data = now.getDate()+"/"+now.getMonth()+"/"+now.getFullYear()
-        let hora = now.getHours()+":"+now.getMinutes()+":"+now.getSeconds()
-  
-        dados = localizarConta(Contaid)
-                  var LancamentoConta = {
-                    id: id++ ,contarelacionada:dados,valor,data,hora
-                  }
-                  Contas.push(LancamentoConta)
-                  localStorage.setItem('ContasLancadas',JSON.stringify(Contas))
       }
+
+        let id = Date.now()
+        let Cliente = localStorage.getItem('IdAtual')
+        let Contaid = document.getElementById('txtcontanome').value
+        let valor = document.getElementById('txtvalor').value
+        let now = new Date
+        let data = now.getDate()+"/"+now.getMonth()+"/"+now.getFullYear()
+        let hora = now.getHours()+":"+now.getMinutes()+":"+now.getSeconds()
+  
+        dados = localizarConta(Contaid)
+                  var LancamentoConta = {
+                    id: id++ ,contarelacionada:dados,valor,data,hora,Cliente
+                  }
+                  Contas.push(LancamentoConta)
+                  localStorage.setItem('ContasLancadas',JSON.stringify(Contas))
+
     }else{
       alert('Não há contas cadastradas. Cadastre uma :)')
     }    
@@ -79,7 +67,19 @@ function openForm() {
 
   function ListarContasLancadas(){
     let ContasLancadas = JSON.parse(localStorage.getItem('ContasLancadas'))
+    let Cliente = JSON.parse(localStorage.getItem('IdAtual'))
+    let linha = "";
+    let coluna = ['id','nome','valor','data','hora','edit']
+    let conteudo = ""
+    let i = 0
+    let indice = 0
+
     i = 0
+    if(!ContasLancadas || ContasLancadas == '[]'){
+      return
+    }
+
+    debugger
     while(i < ContasLancadas.length){
       let id = ContasLancadas[i].contarelacionada.id
       let local = localizarConta(id)
@@ -91,67 +91,59 @@ function openForm() {
       i++
     }
     localStorage.setItem('ContasLancadas',JSON.stringify(ContasLancadas))
-    let linha = ""
     ContasLancadas = JSON.parse(localStorage.getItem('ContasLancadas'))
 
     ContasLancadas.forEach(element => {
-    let row = document.getElementById("id");
-    linha += "<label>"+element.id+"</label><br>"
-    row.innerHTML = linha;  
-    });
-
-    let linhan = ""
-    ContasLancadas.forEach(element => {
-      let row = document.getElementById("nome");
-      linhan += "<label>"+element.contarelacionada.titulo+"</label><br>"
-      row.innerHTML = linhan;  
-      });
-
-      let linhav = ""
-    ContasLancadas.forEach(element => {
-      let row = document.getElementById("valor");
-      if(element.contarelacionada.tipo == "Receita"){
-        linhav += "<label style='color: #13a100'>"+element.valor+"</label><br>"
-        row.innerHTML = linhav; 
-      }else{
-        linhav += "<label style='color: #fc0303'>"+element.valor+"</label><br>"
-        row.innerHTML = linhav; 
-      }
-      });
-
-      let linhadata = ""
-    ContasLancadas.forEach(element => {
-      let row = document.getElementById("data");
-      linhadata += "<label>"+element.data+"</label><br>"
-      row.innerHTML = linhadata;  
-      });
-
-      let linhahora = ""
-      ContasLancadas.forEach(element => {
-        let row = document.getElementById("hora");
-        linhahora += "<label>"+element.hora+"</label><br>"
-        row.innerHTML = linhahora;  
-        });
-
-        let linhaedit = ""
-        ContasLancadas.forEach(element => {
-          let row = document.getElementById("edit");
-          linhaedit += "<button class='btn' onclick='editarConta("+element.id+")'>Editar</button><br>"
-          row.innerHTML = linhaedit;  
+      if(element.Cliente == Cliente){
+        i = 0
+        while(i < 6){
+          switch(coluna[i]){
+            case 'id':
+              conteudo = ContasLancadas[indice].id
+              break;
+            case 'nome':
+              conteudo = ContasLancadas[indice].contarelacionada.titulo
+              break;
+            case 'valor':
+              if(element.contarelacionada.tipo == "Receita"){
+                    conteudo = "<label style='color: #13a100'>"+element.valor+"</label><br>" 
+                  }else{
+                    conteudo = "<label style='color: #fc0303'>"+element.valor+"</label><br>"
+                  }
+              break;
+            case 'data':
+              conteudo = ContasLancadas[indice].data
+              break;
+            case 'hora':
+              conteudo = ContasLancadas[indice].hora
+              break;
+            case 'edit':
+              conteudo = "<button class='btn' onclick='editarConta("+element.id+")'>Editar</button><br>"
+              break;
+          }
+          let row = document.getElementById(coluna[i]);
+          linha = "<label>"+conteudo+"</label><br>"
+          i++
+          row.innerHTML += linha
+        }
+        indice++
+      } 
           });
 
           i = 0
-          while(i < ContasLancadas.length){
-            if(ContasLancadas[i].contarelacionada.tipo === "Receita"){
-              receita += parseInt(ContasLancadas[i].valor)
-              i++
-              document.getElementById('labelavalor').innerHTML = receita
-            }else{
-              despesa += parseInt(ContasLancadas[i].valor)
-              i++
-              document.getElementById('labeladespesa').innerHTML = despesa
+          if(ContasLancadas[i].Cliente == Cliente){
+            while(i < ContasLancadas.length){
+              if(ContasLancadas[i].contarelacionada.tipo === "Receita"){
+                receita += parseInt(ContasLancadas[i].valor)
+                i++
+                document.getElementById('labelavalor').innerHTML = receita
+              }else{
+                despesa += parseInt(ContasLancadas[i].valor)
+                i++
+                document.getElementById('labeladespesa').innerHTML = despesa
+              }
             }
-        } 
+          }
         let saldo = receita - despesa
         document.getElementById('labelasaldo').innerHTML = saldo
         if(saldo <= 0){
@@ -232,26 +224,33 @@ function openForm() {
 
   function quantidade(){
     let ContasLancadas = JSON.parse(localStorage.getItem('ContasLancadas'))
+    let Cliente = localStorage.getItem('IdAtual')
+    if(!localStorage.getItem('IdAtual') || localStorage.getItem('IdAtual') == '[]'){
+      return
+    }
 
     i = 0
-          while(i < ContasLancadas.length){
-            if(ContasLancadas[i].contarelacionada.tipo === "Receita"){
-              receita += parseInt(ContasLancadas[i].valor)
-              i++
-              document.getElementById('qreceita').innerHTML = receita
-            }else{
-              despesa += parseInt(ContasLancadas[i].valor)
-              i++
-              document.getElementById('qdespesa').innerHTML = despesa
-            }
-            let saldo = receita - despesa
-            document.getElementById('qsaldo').innerHTML = saldo
-            if(saldo <= 0){
-              document.getElementById('qsaldo').style.color = '#fc0303'
-            }else{
-              document.getElementById('qsaldo').style.color = '#13a100'
-            }
+    if(ContasLancadas[i].Cliente == Cliente){
+      while(i < ContasLancadas.length){
+        if(ContasLancadas[i].contarelacionada.tipo === "Receita"){
+          receita += parseInt(ContasLancadas[i].valor)
+          i++
+          document.getElementById('qreceita').innerHTML = receita
+        }else{
+          despesa += parseInt(ContasLancadas[i].valor)
+          i++
+          document.getElementById('qdespesa').innerHTML = despesa
         }
+        let saldo = receita - despesa
+        document.getElementById('qsaldo').innerHTML = saldo
+        if(saldo <= 0){
+          document.getElementById('qsaldo').style.color = '#fc0303'
+        }else{
+          document.getElementById('qsaldo').style.color = '#13a100'
+        }
+      }
+    }
+          
   }
 
   function verificar(){

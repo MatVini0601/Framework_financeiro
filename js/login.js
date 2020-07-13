@@ -92,7 +92,7 @@ function logout(){
         localStorage.setItem('UsuarioLogado',usuario)
         localStorage.setItem('NomeLogado',nomeUsuario)
         localStorage.setItem('IdAtual',idAtual)
-        window.location.reload('index.html')
+        window.location.replace('index.html')
     }
 }
 

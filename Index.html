@@ -15,7 +15,6 @@
     <script src="js/login.js"></script>
     <script src="js/perfil.js"></script>
     <script src="js/administrativo.js"></script>
-
     <script>
         if(!localStorage.getItem('IdAtual')){
             window.location.replace('login.html')
@@ -58,7 +57,8 @@
 
                 </script>
             </div>
-            <div class="info">
+            <div class="info" id='divInfo'>
+               
                <div class="row">
                     <div class="col-4">
                         <h5>Receitas</h5><br>
@@ -113,3 +113,9 @@
     </div>
 </body>
 </html>
+<script>
+    if(!localStorage.getItem('IdAtual') || localStorage.getItem('IdAtual') == "[]"){
+        let info = document.getElementById('divInfo')
+        info.innerHTML = "Faça login para poder ver suas informações"
+    }
+</script>
